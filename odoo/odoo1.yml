@@ -95,7 +95,7 @@
 
       - name: executing odoo
         ansible.builtin.shell:
-          chdir: /home/devops/odoo
+          chdir: "{{ odoo_bin_directory }}/"
           cmd: python3 odoo-bin --addons-path=addons -d mydb &
 
       
