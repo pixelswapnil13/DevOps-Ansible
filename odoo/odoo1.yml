@@ -14,7 +14,6 @@
           repo: "{{ odoo_git_repo_path }}"
           dest: /home/devops/odoo
           clone: yes
-          update: no
 
       - name: Install pip3,postgresql and postgresql-client
         ansible.builtin.apt:
