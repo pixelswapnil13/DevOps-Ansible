@@ -1,0 +1,123 @@
+---
+  - name: Install nopCommercce
+    become: yes
+    hosts: webserver
+    vars:
+      - username: www-data
+      - microsoft_package_download_url: https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
+      - nopcommerce_directory: /var/www/nopCommerce450
+      - default_conf_file_path: /etc/nginx/sites-available/default
+      - nopCommerce_service_location: /etc/systemd/system/nopCommerce450.service
+
+    tasks:
+      - name: update apt repo and cache
+        apt:
+          update_cache: yes
+
+      - name: Download Microsoft key
+        ansible.builtin.get_url:
+          url: "{{ microsoft_package_download_url }}"
+          dest: /home/devops/packages-microsoft-prod.deb
+
+      - name: Install deb key
+        ansible.builtin.shell: dpkg -i packages-microsoft-prod.deb
+
+      - name: Install .netcore runtimes
+        apt:
+          name: "{{ item }}"
+          update_cache: yes
+          state: present
+        with_items:
+             - apt-transport-https
+             - aspnetcore-runtime-6.0
+
+      - name: Install My sql server
+        ansible.builtin.apt:
+          name: mysql-server
+          state: present
+
+      - name: Install Nginx
+        ansible.builtin.apt:
+          name: nginx
+          state: present
+        notify: 
+            - reload the daemon, enable and start the nginx service
+
+      - name: To configure nginx as a reverse proxy to forward requests to your ASP.NET Core
+        ansible.builtin.copy:
+          src: default
+          dest: "{{ default_conf_file_path }}"
+
+      - name: Create a directory nopCommerce450 in /var/www/
+        ansible.builtin.file:
+          path: "{{ nopcommerce_directory }}"
+          state: directory
+          recurse: yes
+          owner: "{{ username }}"
+          group: "{{ username }}"
+          mode: "0755"
+
+      - name: Download nopCommerce
+        ansible.builtin.get_url:
+          url: "https://github.com/nopSolutions/nopCommerce/releases/download/release-4.50.2/nopCommerce_4.50.2_NoSource_linux_x64.zip"
+          dest: "{{ nopcommerce_directory }}"
+
+      - name: Install Unzip
+        ansible.builtin.apt:
+          name: unzip
+          state: present
+
+      - name: Unarchive nopCommerce_4.50.2_NoSource_linux_x64.zip
+        ansible.builtin.unarchive:
+          src: "{{ nopcommerce_directory }}/nopCommerce_4.50.2_NoSource_linux_x64.zip"
+          dest: "{{ nopcommerce_directory }}"
+          remote_src: yes
+          owner: "{{ username }}"
+          group: "{{ username }}"
+
+      - name: Give permissions to an existing file
+        ansible.builtin.file:
+          path: "{{ nopcommerce_directory }}/Nop.Web.dll"
+          owner: "{{ username }}"
+          group: "{{ username }}"
+          mode: '0755'
+
+      - name: Create a directory bin
+        ansible.builtin.file:
+          path: "{{ nopcommerce_directory }}/bin"
+          state: directory
+          owner: "{{ username }}"
+          group: "{{ username }}"
+          mode: '0755'
+
+      - name: Create a directory logs
+        ansible.builtin.file:
+          path: "{{ nopcommerce_directory }}/logs"
+          state: directory
+          owner: "{{ username }}"
+          group: "{{ username }}"
+          mode: '0755'
+
+      - name: Creating nopCommerce Service
+        ansible.builtin.template:
+          src: 'nopCommerce450.service.j2'
+          dest: "{{ nopCommerce_service_location }}"
+        notify:
+          - Start nopCommerce450 Service
+      
+
+    handlers:
+      - name: reload the daemon, enable and start the nginx service
+        ansible.builtin.systemd:
+          name: 'nginx.service'
+          daemon_reload: yes
+          enabled: yes
+          state: restarted
+
+      - name: Start nopCommerce450 Service
+        ansible.builtin.systemd:
+          name: 'nopCommerce450.service'
+          state: started
+          enabled: yes
+
+      

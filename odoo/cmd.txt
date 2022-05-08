@@ -1,0 +1,44 @@
+1  sudo -u postgres createuser -s $USER
+    2  createuser -s $USER
+    3  sudo apt install postgresql-client-common
+    4  sudo -u postgres createuser -s $USER
+    5  createdb $USER
+    6  clar
+    7  clear
+    8  sudo apt install python3-dev libxml2-dev libxslt1-dev libldap2-dev libsasl2-dev     libtiff5-dev libjpeg8-dev libopenjp2-7-dev zlib1g-dev libfreetype6-dev     liblcms2-dev libwebp-dev libharfbuzz-dev libfribidi-dev libxcb1-dev libpq-dev
+    9  ls
+   10  git clone https://github.com/odoo/odoo.git
+   11  df
+   12  clear
+   13  sudo apt install nodejs
+   14  nodejs --version
+   15  npm --version
+   16  sudo apt  install npm
+   17  df
+   18  sudo npm install -g rtlcss
+   19  cd odoo/
+   20  pip3 install setuptools wheel
+   21  pip3 install -r requirements.txt
+   22  df
+   23  clear
+   24  ls -la
+   25  python3 odoo-bin --addons-path=addons -d mydb
+   26  sudo systemctl status odoo
+   27  sudo systemctl daemon-reload
+   28  python3 odoo-bin --addons-path=addons -d mydb &
+   29  sudo systemctl status odoo
+   30  sudo systemctl status odoo.service
+   31  ps -e
+   32  ps -e odoo
+   33  ps -e | grep odoo
+   34  python3 odoo-bin --addons-path=addons -d mydb
+   35  sudo kill 19727
+   36  python3 odoo-bin --addons-path=addons -d mydb
+   37  python3 odoo-bin --addons-path=addons -d mydb &
+   38  curl localhost://8069
+   39  curl http://localhost:8069
+   40  ps -e
+   41  sudo kills 19824
+   42  sudo kill 19824
+   43  clear
+   44  history

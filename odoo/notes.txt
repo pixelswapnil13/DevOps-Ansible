@@ -1,0 +1,80 @@
+sudo apt get update
+
+----------------
+python3 --version
+
+----------------------
+installing pip3
+sudo apt install python3-pip -y
+
+pip3 --version
+
+------------------------------
+installing postgress sql
+sudo apt install postgresql postgresql-client -y
+---------------------------------------------------------------------------
+change the password for postgres user -   the new passowod is "postgres"
+
+sudo passwd postgres
+
+
+then add posgres user into sudoers file using below command
+
+sudo usermod -a -G sudo postgres
+
+-------------------------------------------------------------------
+
+$ sudo -u postgres createuser -s $USER
+$ createdb $USER
+-------------------------------------------------------------------
+install dependancies
+
+$ sudo apt install python3-dev libxml2-dev libxslt1-dev libldap2-dev libsasl2-dev \
+    libtiff5-dev libjpeg8-dev libopenjp2-7-dev zlib1g-dev libfreetype6-dev \
+    liblcms2-dev libwebp-dev libharfbuzz-dev libfribidi-dev libxcb1-dev libpq-dev
+
+- name: Install dependencies for PostgreSQL
+    apt: name={{ item }} 
+    update_cache=true 
+    state=latest
+ with_items:
+  
+    - python3-dev
+    - libxml2-dev
+    - libxslt1-dev
+    - libldap2-dev
+    - libsasl2-dev
+    - libtiff5-dev 
+    - libjpeg8-dev 
+    - libopenjp2-7-dev 
+    - zlib1g-dev 
+    - libfreetype6-dev 
+    - liblcms2-dev 
+    - libwebp-dev 
+    - libharfbuzz-dev 
+    - libfribidi-dev 
+    - libxcb1-dev
+    - libpq-dev
+	
+---------------------------------------------------------------------
+cd odoo/
+
+$ pip3 install setuptools wheel
+$ pip3 install -r requirements.txt
+
+
+
+- name: Install specified python requirements
+  pip:
+    requirements: /my_app/requirements.txt
+-------------------------------
+install node js
+
+sudo apt install nodejs -y
+
+-------------------------------
+insatll npm
+
+sudp apt install npm -y
+
+-------------------------------

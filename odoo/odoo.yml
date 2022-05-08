@@ -1,0 +1,75 @@
+---
+  - name: Install OpenMRS
+    become: yes
+    hosts: all
+    vars:
+      - odoo_git_repo_path: https://github.com/odoo/odoo.git 
+    tasks:
+      - name: update apt repo and cache
+        apt:
+          update_cache: yes
+
+      - name: Clone a odoo repository
+        ansible.builtin.git:
+          repo: "{{ odoo_git_repo_path }}"
+          dest: /home/devops/odoo
+          clone: yes
+          update: no
+
+      - name: Install pip3
+        ansible.builtin.apt:
+          name: "{{ item }}"
+          state: present
+        with_items:
+          - python3-pip
+          - postgresql
+          - postgresql-client
+
+      - name: create a new PostgreSQL user
+        ansible.builtin.command:
+          cmd: sudo -u postgres createuser -s $USER
+        ignore_errors: True
+
+      - name: create database
+        ansible.builtin.command:
+          cmd: createdb $USER
+        ignore_errors: True
+
+
+      - name: Install dependencies for PostgreSQL
+        apt: 
+          name: "{{ item }}"
+          update_cache: true 
+          state: latest
+        with_items:
+          - python3-dev
+          - libxml2-dev
+          - libxslt1-dev
+          - libldap2-dev
+          - libsasl2-dev
+          - libtiff5-dev
+          - libjpeg8-dev
+          - libopenjp2-7-dev
+          - zlib1g-dev
+          - libfreetype6-dev
+          - liblcms2-dev
+          - libwebp-dev
+          - libharfbuzz-dev
+          - libfribidi-dev
+          - libxcb1-dev
+          - libpq-dev
+
+      - name: Install specified python requirements  
+        pip:
+          requirements: /home/devops/odoo/requirements.txt
+        ignore_errors: True
+
+      - name: Install nodejs
+        ansible.builtin.apt:
+          name: nodejs
+          state: present
+
+      - name: Install npm
+        ansible.builtin.apt:
+          name: npm
+          state: present
