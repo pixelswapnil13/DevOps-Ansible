@@ -68,7 +68,7 @@
         ansible.builtin.command: pip3 install -r requirements.txt
         become: yes
         args:
-          chdir: /home/devops/odoo
+          chdir: /home/devops/odoo/
 
       - name: Install nodejs
         ansible.builtin.apt:
