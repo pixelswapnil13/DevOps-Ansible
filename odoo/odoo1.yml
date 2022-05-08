@@ -93,7 +93,8 @@
           - npm
 
       - name: executing odoo
-        ansible.builtin.command:
-          cmd: sudo python3 odoo-bin --addons-path=addons -d mydb
+        ansible.builtin.shell:
+          chdir: /home/devops/odoo
+          cmd: python3 odoo-bin --addons-path=addons -d mydb
 
       
