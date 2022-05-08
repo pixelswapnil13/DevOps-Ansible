@@ -12,7 +12,7 @@
       - name: Clone a odoo repository
         ansible.builtin.git:
           repo: "{{ odoo_git_repo_path }}"
-          dest: /home/devops/odoo
+          dest: /home/ubuntu/odoo
           clone: yes
           update: no
 
@@ -25,14 +25,18 @@
           - postgresql
           - postgresql-client
 
-      - name: create a new PostgreSQL user
-        ansible.builtin.command:
-          cmd: sudo -u postgres createuser -s $USER
+      - name: create a db user
+        postgresql_user:
+          state: present
+          name: devops
+          password: devops
+          role_attr_flags: SUPERUSER
         ignore_errors: True
 
       - name: create database
-        ansible.builtin.command:
-          cmd: createdb $USER
+        postgresql_db:
+          state: present
+          name: devops
         ignore_errors: True
 
 
@@ -59,23 +63,21 @@
           - libxcb1-dev
           - libpq-dev
 
-     # - name: Install specified python requirements  
-      #  ansible.builtin.pip:
-       #   chdir: /home/devops/odoo
-        #  requirements: "-r requirements.txt"
+      - name: Install setuptools, wheel python package
+        pip:
+          name:
+            - setuptools
+            - wheel
+          chdir: /home/ubuntu/odoo
 
-      - name: Requirements file
-        ansible.builtin.command: pip3 install -r requirements.txt
-        become: yes
-        args:
-          chdir: /home/devops/odoo/
+      - name: Install pythone requiremetns
+        pip:
+          requirements: /home/ubuntu/odoo/requirements.txt
 
-      - name: Install nodejs
+      - name: Install nodejs and npm
         ansible.builtin.apt:
-          name: nodejs
+          name: "{{ item }}"
           state: present
-
-      - name: Install npm
-        ansible.builtin.apt:
-          name: npm
-          state: present
+        with_items:
+          - nodejs
+          - npm
