@@ -14,6 +14,7 @@
           repo: "{{ odoo_git_repo_path }}"
           dest: /home/devops/odoo
           clone: yes
+          update: no
 
       - name: Install pip3,postgresql and postgresql-client
         ansible.builtin.apt:
@@ -24,18 +25,28 @@
           - postgresql
           - postgresql-client
 
-      - name: create a db user
-        postgresql_user:
-          state: present
-          name: devops
-          password: devops
-          role_attr_flags: SUPERUSER
+     # - name: create a db user
+       # postgresql_user:
+        #  state: present
+         # name: devops
+         # password: devops
+         # role_attr_flags: SUPERUSER
+        #ignore_errors: True
+
+     # - name: create database
+      #  postgresql_db:
+       #   state: present
+       #   name: devops
+       # ignore_errors: True
+
+      - name: create a new PostgreSQL user
+        ansible.builtin.command:
+          cmd: sudo -u postgres createuser -s $USER
         ignore_errors: True
 
       - name: create database
-        postgresql_db:
-          state: present
-          name: devops
+        ansible.builtin.command:
+          cmd: createdb $USER
         ignore_errors: True
 
 
