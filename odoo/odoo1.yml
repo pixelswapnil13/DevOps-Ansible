@@ -3,7 +3,8 @@
     become: yes
     hosts: all
     vars:
-      - odoo_git_repo_path: https://github.com/odoo/odoo.git 
+      - odoo_git_repo_path: https://github.com/odoo/odoo.git
+      - odoo_bin_directory: /opt/devops/odoo
     tasks:
       - name: update apt repo and cache
         apt:
@@ -12,7 +13,7 @@
       - name: Clone a odoo repository
         ansible.builtin.git:
           repo: "{{ odoo_git_repo_path }}"
-          dest: /home/devops/odoo
+          dest: "{{ odoo_bin_directory }}"
           clone: yes
           update: no
 
@@ -78,11 +79,11 @@
           name:
             - setuptools
             - wheel
-          chdir: /home/devops/odoo
+          chdir: "{{ odoo_bin_directory }}"
 
       - name: Install pythone requiremetns
         pip:
-          requirements: /home/devops/odoo/requirements.txt
+          requirements: "{{ odoo_bin_directory }}/requirements.txt"
 
       - name: Install nodejs and npm
         ansible.builtin.apt:
@@ -94,7 +95,7 @@
 
       - name: executing odoo
         ansible.builtin.shell:
-          chdir: /home/devops/odoo
-          cmd: python3 odoo-bin --addons-path=addons -d mydb
+          chdir: "{{ odoo_bin_directory }}"
+          cmd: python3 odoo-bin --addons-path=addons -d mydb &
 
       
