@@ -12,7 +12,7 @@
       - name: Clone a odoo repository
         ansible.builtin.git:
           repo: "{{ odoo_git_repo_path }}"
-          dest: /home/ubuntu/odoo
+          dest: /home/devops/odoo
           clone: yes
           update: no
 
@@ -68,11 +68,11 @@
           name:
             - setuptools
             - wheel
-          chdir: /home/ubuntu/odoo
+          chdir: /home/devops/odoo
 
       - name: Install pythone requiremetns
         pip:
-          requirements: /home/ubuntu/odoo/requirements.txt
+          requirements: /home/devops/odoo/requirements.txt
 
       - name: Install nodejs and npm
         ansible.builtin.apt:
