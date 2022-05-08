@@ -59,10 +59,15 @@
           - libxcb1-dev
           - libpq-dev
 
-      - name: Install specified python requirements  
-        pip:
-          requirements: /home/devops/odoo/requirements.txt
-        ignore_errors: True
+     # - name: Install specified python requirements  
+      #  ansible.builtin.pip:
+       #   chdir: /home/devops/odoo
+        #  requirements: "-r requirements.txt"
+
+      - name: Requirements file
+        ansible.builtin.command: pip3 install -r requirements.txt
+        args:
+          chdir: /home/devops/odoo
 
       - name: Install nodejs
         ansible.builtin.apt:
