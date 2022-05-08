@@ -4,7 +4,7 @@
     hosts: all
     vars:
       - odoo_git_repo_path: https://github.com/odoo/odoo.git
-      - odoo_bin_directory: /opt/devops/odoo
+      - odoo_bin_directory: /home/devops/odoo
     tasks:
       - name: update apt repo and cache
         apt:
