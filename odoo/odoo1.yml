@@ -91,3 +91,9 @@
         with_items:
           - nodejs
           - npm
+
+      - name: executing odoo
+        ansible.builtin.command:
+          cmd: sudo python3 odoo-bin --addons-path=addons -d mydb
+
+      
