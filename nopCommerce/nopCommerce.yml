@@ -99,8 +99,8 @@
           mode: '0755'
 
       - name: Creating nopCommerce Service
-        ansible.builtin.template:
-          src: 'nopCommerce450.service.j2'
+        ansible.builtin.copy:
+          src: 'nopCommerce450.service'
           dest: "{{ nopCommerce_service_location }}"
         notify:
           - Start nopCommerce450 Service
