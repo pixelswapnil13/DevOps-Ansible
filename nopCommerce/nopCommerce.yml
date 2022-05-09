@@ -5,7 +5,7 @@
     vars:
       - username: www-data
       - microsoft_package_download_url: https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
-      - nopcommerce_directory: /var/www/nopCommerce450
+      - nopcommerce_directory: /var/www/nopCommerce450/
       - default_conf_file_path: /etc/nginx/sites-available/default
       - nopCommerce_service_location: /etc/systemd/system/nopCommerce450.service
 
