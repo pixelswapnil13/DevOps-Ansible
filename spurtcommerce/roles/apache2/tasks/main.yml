@@ -9,7 +9,6 @@
       name: apache2
       state: present
 
-- name: Install additional apache modules
 - apache2_module:
     state: present
     name: "{{ item }}"
