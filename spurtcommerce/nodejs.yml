@@ -6,8 +6,8 @@
       - name: Script to install the NodeSource Node.js 14.x repo onto a Debian or Ubuntu system
         ansible.builtin.shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 
-      - name: Install nodejs and build-essential (optional)
-        anisble.builtin.apt:
+      - name: Install nodejs and build-essential
+        ansible.builtin.apt:
           name: "{{ item }}"
           state: present
         with_items:
