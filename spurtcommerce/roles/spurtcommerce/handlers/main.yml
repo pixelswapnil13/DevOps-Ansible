@@ -1,6 +1,6 @@
 ---
 - name: Ensure apache2 service is restarted
   ansible.builtin.service:
-      name: apache2
-      enabled: yes
-      state: restarted
+    name: apache2
+    enabled: yes
+    state: restarted
