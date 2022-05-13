@@ -1,6 +1,7 @@
 ---
 - name: Install spurtcommerce
   become: yes
+  hosts: all
   roles:
     - role: nodejs
       become: yes
