@@ -2,7 +2,7 @@
 
 - include_task: setup_Debian.yml
 - name: Script to install the NodeSource Node.js 14.x repo onto a Debian or Ubuntu system
-      ansible.builtin.shell: "curl -sL {{ NodeSource_Nodejs14_repo_path }} | sudo -E bash -"
+  ansible.builtin.shell: "curl -sL {{ NodeSource_Nodejs14_repo_path }} | sudo -E bash -"
 
 - name: Install nodejs and build-essential
   ansible.builtin.apt:
