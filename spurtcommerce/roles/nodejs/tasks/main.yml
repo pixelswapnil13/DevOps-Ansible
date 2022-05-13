@@ -1,6 +1,8 @@
 ---
 
-- include_task: setup_Debian.yml
+- name: update apt repo and cache
+  apt:
+    update_cache: yes
 
 - name: Script to install the NodeSource Node.js 14.x repo onto a Debian or Ubuntu system
   ansible.builtin.shell: "curl -sL {{ NodeSource_Nodejs14_repo_path }} | sudo -E bash -"
