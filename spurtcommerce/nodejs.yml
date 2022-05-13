@@ -7,7 +7,7 @@
         ansible.builtin.shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 
       - name: Install nodejs and build-essential (optional)
-          name: {{ item }}
+          name: "{{ item }}"
           state: present
         with_items:
              - nodejs
@@ -15,7 +15,7 @@
 
       - name: Install additional dependencies
         npm:
-          name: {{ item }}
+          name: "{{ item }}"
           global: yes
           state: present
         with_items:
