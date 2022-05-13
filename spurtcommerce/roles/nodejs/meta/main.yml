@@ -27,9 +27,9 @@ galaxy_info:
   # To view available platforms and versions (or releases), visit:
   # https://galaxy.ansible.com/api/v1/platforms/
   #
-   platforms:
-   - name: Ubuntu
-     versions:
+  platforms:
+  - name: Ubuntu
+    versions:
       - 20.04
       - 18.04
 
