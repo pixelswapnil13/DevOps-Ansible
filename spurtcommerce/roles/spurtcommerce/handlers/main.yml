@@ -5,3 +5,10 @@
     daemon_reload: yes
     enabled: yes
     state: restarted
+
+- name: Restart mysql
+  ansible.builtin.systemd:
+    name: 'mysql.service'
+    daemon_reload: yes
+    enabled: yes
+    state: restarted

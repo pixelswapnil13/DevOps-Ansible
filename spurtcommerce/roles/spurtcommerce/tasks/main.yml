@@ -3,3 +3,4 @@
   when: ansible_facts['os_family'] == "Debian"
 - include_tasks: setup-nodejs.yml
 - include_tasks: setup-apache2.yml
+- include_tasks: setup-mysql.yml
