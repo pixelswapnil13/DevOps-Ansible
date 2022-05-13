@@ -2,9 +2,11 @@
   - name: Install nodejs
     become: yes
     hosts: all
+    vars:
+      NodeSource_Nodejs14_repo_path: https://deb.nodesource.com/setup_14.x
     tasks:
       - name: Script to install the NodeSource Node.js 14.x repo onto a Debian or Ubuntu system
-        ansible.builtin.shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+        ansible.builtin.shell: "curl -sL {{ NodeSource_Nodejs14_repo_path }} | sudo -E bash -"
 
       - name: Install nodejs and build-essential
         ansible.builtin.apt:
