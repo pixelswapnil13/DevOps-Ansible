@@ -8,8 +8,8 @@ Environment="CATALINA_PID={{ home_dir }}/temp/tomcat.pid"
 Environment="CATALINA_HOME={{ home_dir }}"
 Environment="CATALINA_BASE={{ home_dir }}"
 Environment=’CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC’
-ExecStart="{{ tomcat_bin_directory }}/startup.sh"
-ExecStop="{{ tomcat_bin_directory }}/shutdown.sh"
+ExecStart={{ tomcat_bin_directory }}/startup.sh
+ExecStop={{ tomcat_bin_directory }}/shutdown.sh
 User={{ username }}
 Group={{ username }}
 UMask=0007
