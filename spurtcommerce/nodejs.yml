@@ -2,7 +2,7 @@
   - name: Install nodejs
     become: yes
     hosts: all
-    task:
+    tasks:
       - name: Script to install the NodeSource Node.js 14.x repo onto a Debian or Ubuntu system
         ansible.builtin.shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 
