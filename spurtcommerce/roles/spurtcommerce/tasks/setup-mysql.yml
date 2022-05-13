@@ -1,8 +1,11 @@
 ---
 - name: Installing mysql 
   ansible.builtin.apt:
-    name: mysql-server
+    name: "{{ item }}"
     state: present
+  with_items:
+       - mysql-server
+       - python3-pymysql
 
 - name: Set MySQL root Password
   mysql_user:
