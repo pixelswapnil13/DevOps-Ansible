@@ -5,4 +5,7 @@
   roles:
     - role: nodejs
       become: yes
+    - role: apache2
+      become: yes
+
   

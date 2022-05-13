@@ -1,0 +1,21 @@
+---
+
+- name: update apt repo and cache
+  apt:
+    update_cache: yes
+
+- name: Install apache
+  ansible.builtin.apt:
+      name: apache2
+      state: present
+
+- name: Install additional apache modules
+- apache2_module:
+    state: present
+    name: "{{ item }}"
+  with_items:
+       - proxy
+       - proxy_http
+       - headers
+  notify:
+    - Ensure apache2 service is restarted
