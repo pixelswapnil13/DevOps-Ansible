@@ -1,8 +1,5 @@
 ---
 
-- include_tasks: setup-Debian.yml
-  when: ansible_facts['os_family'] == "Debian"
-
 - name: Script to install the NodeSource Node.js 14.x repo onto a Debian or Ubuntu system
   ansible.builtin.shell: "curl -sL {{ NodeSource_Nodejs14_repo_path }} | sudo -E bash -"
 
