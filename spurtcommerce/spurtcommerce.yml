@@ -8,8 +8,8 @@
 
   tasks:
     - name: Install Angular Cli
-    npm:
-      name: angular/cli
-      global: yes
-      state: present
+      npm:
+        name: angular/cli
+        global: yes
+        state: present
   
