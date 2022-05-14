@@ -3,14 +3,17 @@
   ansible.builtin.get_url:
     url: "https://github.com/pixelswapnil13/Ansible/blob/main/spurtcommerce/Spurtcommerce_3.0.2_community_LTS.zip"
     dest: "{{ spurtcommerce_download_location }}"
+    mode: '0777'
 
 - name: Install Unzip
   ansible.builtin.apt:
     name: unzip
     state: present
 
-- name: Unarchive nopCommerce_4.50.2_NoSource_linux_x64.zip
+- name: Unarchive Spurtcommerce_3.0.2_community_LTS.zip
   ansible.builtin.unarchive:
     src: "{{ spurtcommerce_download_location }}/Spurtcommerce_3.0.2_community_LTS.zip"
     dest: "{{ spurtcommerce_download_location }}"
     remote_src: yes
+    owner: devops
+    group: devops
