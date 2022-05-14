@@ -20,5 +20,5 @@
 
 - name: update db password in env file
   ansible.builtin.command:
-    cmd: sed -i 's/TYPEORM_PASSWORD=PASSWORD/TYPEORM_PASSWORD=root/g' .env
+    cmd: sed -i 's/TYPEORM_PASSWORD=PASSWORD/TYPEORM_PASSWORD=root/g' /home/devops/Spurtcommerce_3.0.2_community_LTS/api.env
   
