@@ -18,9 +18,7 @@
     owner: devops
     group: devops
 
-- name: Ensure php extension matches new pattern
-  lineinfile:
-    path: /home/devops/Spurtcommerce_3.0.2_community_LTS/api/.env
-    search_string: '<FilesMatch "TYPEORM_PASSWORD=PASSWORD">'
-    insertafter: '^\t<Location \/>\n'
-    line: '        <FilesMatch "TYPEORM_PASSWORD=root">'
+- name: update db password in env file
+  ansible.builtin.command:
+    cmd: sed -i 's/TYPEORM_PASSWORD=PASSWORD/TYPEORM_PASSWORD=root/g' .env
+  
