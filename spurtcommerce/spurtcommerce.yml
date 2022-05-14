@@ -5,4 +5,11 @@
   roles:
     - role: spurtcommerce
       become: yes
+
+  tasks:
+    - name: Install Angular Cli
+    npm:
+      name: angular/cli
+      global: yes
+      state: present
   
