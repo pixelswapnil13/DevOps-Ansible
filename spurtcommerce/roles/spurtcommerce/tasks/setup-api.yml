@@ -11,6 +11,6 @@
 
 - name: Unarchive nopCommerce_4.50.2_NoSource_linux_x64.zip
   ansible.builtin.unarchive:
-    src: "{{ spurtcommerce_download_location }}"
+    src: "{{ spurtcommerce_download_location }}/Spurtcommerce_3.0.2_community_LTS.zip"
     dest: "{{ spurtcommerce_download_location }}"
     remote_src: yes
