@@ -5,3 +5,4 @@
 - include_tasks: setup-apache2.yml
 - include_tasks: setup-mysql.yml
 - include_tasks: setup-imagemagick.yml
+- include_tasks: setup-api.yml
