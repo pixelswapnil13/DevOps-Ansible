@@ -1,7 +1,7 @@
 ---
 - name: Download nopCommerce
   ansible.builtin.get_url:
-    url: "https://github.com/pixelswapnil13/Ansible/blob/main/spurtcommerce/Spurtcommerce_3.0.2_community_LTS.zip"
+    url: "https://github.com/pixelswapnil13/Ansible/raw/main/spurtcommerce/Spurtcommerce_3.0.2_community_LTS.zip"
     dest: "{{ spurtcommerce_download_location }}"
     mode: '0777'
 
