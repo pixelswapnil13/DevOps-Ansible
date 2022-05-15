@@ -20,15 +20,15 @@
 
 - name: update db password in env file
   ansible.builtin.command:
-    cmd: sed -i 's/TYPEORM_PASSWORD=PASSWORD/TYPEORM_PASSWORD=root/g' /home/devops/Spurtcommerce_3.0.2_community_LTS/api/.env
+    cmd: "sed -i 's/TYPEORM_PASSWORD=PASSWORD/TYPEORM_PASSWORD=root/g' {{ spurtcommerce_api_path }}/.env"
 
 - name: update db name in env file
   ansible.builtin.command:
-    cmd: sed -i 's/TYPEORM_DATABASE=DATABASE/TYPEORM_DATABASE=spurtcommerce/g' /home/devops/Spurtcommerce_3.0.2_community_LTS/api/.env
+    cmd: "sed -i 's/TYPEORM_DATABASE=DATABASE/TYPEORM_DATABASE=spurtcommerce/g' {{ spurtcommerce_api_path }}/.env"
 
 - name: update bcrypt version to 5.0.1
   ansible.builtin.command:
-    cmd: "sed -i 's/{{ bcrypt_old_version }}/{{ bcrypt_new_version }}/g' /home/devops/Spurtcommerce_3.0.2_community_LTS/api/package.json"
+    cmd: "sed -i 's/{{ bcrypt_old_version }}/{{ bcrypt_new_version }}/g' {{ spurtcommerce_api_path }}/package.json"
 
 - name: Install packages based on package.json.
   community.general.npm:
@@ -37,7 +37,7 @@
 - name: Install typeorm-seeding@1.0.0-beta.6
   npm:
     name: "typeorm-seeding"
-    path: /home/devops/Spurtcommerce_3.0.2_community_LTS/api/node_modules/
+    path: "{{ spurtcommerce_api_path }}/node_modules/"
     version: '1.0.0-beta.6'
 
 - name: Change the working directory to api path, build the project
