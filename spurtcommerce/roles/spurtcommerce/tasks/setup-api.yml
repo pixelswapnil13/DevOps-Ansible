@@ -40,20 +40,12 @@
     path: /home/devops/Spurtcommerce_3.0.2_community_LTS/api/node_modules/
     version: '1.0.0-beta.6'
 
-#- name: Changig directory to api
- # command: 
-  #  cmd: "cd {{ spurtcommerce_api_path }}"
-
-#- name: Build app
- # command: 
-  #  cmd: npm run build
-
-- name: Change the working directory to api path, build, change Env variatbles and start the project
+- name: Change the working directory to api path, build the project
   ansible.builtin.command: npm run build
   args:
     chdir: "{{ spurtcommerce_api_path }}"
 
-- name: Change the working directory to api path, build, change Env variatbles and start the project
+- name: Start the project
   ansible.builtin.command: npm start serve
   args:
     chdir: "{{ spurtcommerce_api_path }}"
