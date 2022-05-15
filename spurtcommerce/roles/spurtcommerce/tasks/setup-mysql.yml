@@ -28,9 +28,13 @@
   
 - name: Flush Privileges
   ansible.builtin.command:
-    cmd: sudo mysql -u root -p spurtcommerce -e 'FLUSH PRIVILEGES'
+    cmd:
+  with_items:
+       - sudo mysql -uroot -proot
+       - FLUSH PRIVILEGES;  
   notify:
         - Restart mysql
+    
 
 - name: Try to create database as root/nopassword first. If not allowed, pass the credentials
   community.mysql.mysql_db:
