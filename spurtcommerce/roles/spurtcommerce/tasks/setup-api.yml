@@ -41,9 +41,9 @@
     version: '1.0.0-beta.6'
 
 - name: Changig directory to api
-  ansible.builtin.command: 
-    chdir: /home/devops/Spurtcommerce_3.0.2_community_LTS/api
+  command: 
+    chdir: /home/devops/Spurtcommerce_3.0.2_community_LTS/api/
 
 - name: Build app
-  ansible.builtin.command: 
+  command: 
     cmd: npm run build
