@@ -42,7 +42,6 @@
     login_user: root
     login_password: root
     name: spurtcommerce
-    priv: '*.*:ALL,GRANT'
     state: present
 
 - name: Copy database spurtcommerce sql database file to spurtcommerce databse
