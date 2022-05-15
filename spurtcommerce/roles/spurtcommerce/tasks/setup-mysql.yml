@@ -55,6 +55,8 @@
     name: spurtcommerce 
     state: import 
     target: /home/devops/Spurtcommerce_3.0.2_community_LTS/spurtcommerce.sql
+    login_user: root
+    login_password: root
     force: yes
 
 
