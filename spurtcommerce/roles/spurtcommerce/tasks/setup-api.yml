@@ -41,7 +41,8 @@
     version: '1.0.0-beta.6'
 
 - name: Build app
-  command: npm run build
+  ansible.builtin.command: 
+    cmd: npm run build
     args:
       chdir: /home/devops/Spurtcommerce_3.0.2_community_LTS/api
   
