@@ -48,7 +48,7 @@
  # command: 
   #  cmd: npm run build
 
-- name: Change the working directory to somedir/ and run the command as db_owner if /path/to/database does not exist
+- name: Change the working directory to api path, build, change Env variatbles and start the project
   ansible.builtin.command: {{ item }}
   args:
     chdir: "{{ spurtcommerce_api_path }}"
