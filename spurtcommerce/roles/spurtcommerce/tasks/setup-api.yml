@@ -42,7 +42,7 @@
 
 - name: Changig directory to api
   command: 
-    chdir: "{{ spurtcommerce_api_path }}"
+    cmd: "cd {{ spurtcommerce_api_path }}"
 
 - name: Build app
   command: 
