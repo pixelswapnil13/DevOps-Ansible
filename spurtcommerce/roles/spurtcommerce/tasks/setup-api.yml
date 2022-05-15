@@ -28,5 +28,5 @@
 
 - name: update bcrypt version to 5.0.1
   ansible.builtin.command:
-    cmd: "sed -i 's/"bcrypt": "3.0.1",/"bcrypt": "5.0.1",/g' /home/devops/Spurtcommerce_3.0.2_community_LTS/api/package.json"
+    cmd: 'sed -i 's/"bcrypt": "3.0.1"/"bcrypt": "5.0.1"/g' /home/devops/Spurtcommerce_3.0.2_community_LTS/api/package.json'
   
