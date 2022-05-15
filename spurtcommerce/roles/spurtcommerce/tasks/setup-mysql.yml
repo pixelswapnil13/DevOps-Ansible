@@ -37,7 +37,7 @@
   
 - name: Flush Privileges
   ansible.builtin.shell:
-    cmd: mysql -u root -e 'FLUSH PRIVILEGES'
+    cmd: mysql -u root -p root -e 'FLUSH PRIVILEGES'
   ignore_errors: yes
   notify:
         - Restart mysql
