@@ -55,6 +55,7 @@
     name: spurtcommerce 
     state: import 
     target: /home/devops/Spurtcommerce_3.0.2_community_LTS/spurtcommerce.sql
+  ignore_errors: yes
 
 
   
