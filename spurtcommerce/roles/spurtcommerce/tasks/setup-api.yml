@@ -55,4 +55,5 @@
 
 - name: Change the working directory to api path, build, change Env variatbles and start the project
   ansible.builtin.command: npm start serve
+  args:
     chdir: "{{ spurtcommerce_api_path }}"
