@@ -42,8 +42,7 @@
 
 - name: Changig directory to api
   ansible.builtin.command: 
-    args:
-      chdir: /home/devops/Spurtcommerce_3.0.2_community_LTS/api
+    chdir: /home/devops/Spurtcommerce_3.0.2_community_LTS/api
 
 - name: Build app
   ansible.builtin.command: 
