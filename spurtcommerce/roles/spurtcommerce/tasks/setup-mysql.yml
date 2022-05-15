@@ -51,10 +51,10 @@
     state: present
 
 - name: Copy database dump file to remote host and restore it to database 'my_db'
-  copy: 
-  mysql_db: name=spurtcommerce 
-  state: import 
-  target: /home/devops/Spurtcommerce_3.0.2_community_LTS/spurtcommerce.sql
+  mysql_db: 
+    name: spurtcommerce 
+    state: import 
+    target: /home/devops/Spurtcommerce_3.0.2_community_LTS/spurtcommerce.sql
 
 
   
