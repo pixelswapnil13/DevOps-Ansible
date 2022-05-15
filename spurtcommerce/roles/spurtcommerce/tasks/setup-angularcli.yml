@@ -4,3 +4,4 @@
       name: "@angular/cli"
       global: yes
       state: present
+    
