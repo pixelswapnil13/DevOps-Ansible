@@ -36,7 +36,7 @@
 
 - name: Install typeorm-seeding@1.0.0-beta.6
   npm:
-    name: "typeorm-seeding@1.0.0-beta.6 —save"
+    name: "typeorm-seeding"
     path: /home/devops/Spurtcommerce_3.0.2_community_LTS/api/node_modules/
-    state: present
+    version: '1.0.0-beta.6'
   
