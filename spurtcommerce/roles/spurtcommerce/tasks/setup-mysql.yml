@@ -27,7 +27,7 @@
     check_implicit_admin: yes
     login_host: 'localhost'
     login_user: 'root'
-    login_password: ''
+    login_password: 'root'
     name: 'root'
     password: 'root'
     state: present
