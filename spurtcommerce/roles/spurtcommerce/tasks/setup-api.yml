@@ -43,5 +43,5 @@
 - name: Build app
   command: npm run build
     args:
-      chdir: /home/devops/Spurtcommerce_3.0.2_community_LTS/api/
+      chdir: /home/devops/Spurtcommerce_3.0.2_community_LTS/api
   
