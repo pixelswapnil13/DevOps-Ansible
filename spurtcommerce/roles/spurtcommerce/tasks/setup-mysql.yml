@@ -28,7 +28,7 @@
   
 - name: Flush Privileges
   ansible.builtin.command:
-    cmd:
+    cmd: "{{ item }}"
   with_items:
        - sudo mysql -uroot -proot
        - FLUSH PRIVILEGES;  
