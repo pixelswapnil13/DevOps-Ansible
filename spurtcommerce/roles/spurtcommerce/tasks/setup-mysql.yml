@@ -28,7 +28,7 @@
   
 - name: Flush Privileges
   ansible.builtin.command:
-    cmd: mysql -u root -e 'FLUSH PRIVILEGES'
+    cmd: sudo mysql -u root -p spurtcommerce -e 'FLUSH PRIVILEGES'
   notify:
         - Restart mysql
 
