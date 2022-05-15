@@ -6,3 +6,4 @@
 - include_tasks: setup-mysql.yml
 - include_tasks: setup-imagemagick.yml
 - include_tasks: setup-api.yml
+- include_tasks: setup-angularcli.yml
