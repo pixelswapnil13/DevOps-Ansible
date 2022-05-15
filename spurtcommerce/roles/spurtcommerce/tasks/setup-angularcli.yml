@@ -1,5 +1,4 @@
 ---
-tasks:
   - name: Install Angular Cli
     npm:
       name: "@angular/cli"
