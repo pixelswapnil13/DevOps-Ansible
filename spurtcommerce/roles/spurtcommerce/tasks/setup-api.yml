@@ -42,7 +42,7 @@
 
 - name: Changig directory to api
   command: 
-    chdir: /home/devops/Spurtcommerce_3.0.2_community_LTS/api/
+    chdir: "{{ spurtcommerce_api_path }}"
 
 - name: Build app
   command: 

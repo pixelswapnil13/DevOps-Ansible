@@ -4,3 +4,4 @@ NodeSource_Nodejs14_repo_path: https://deb.nodesource.com/setup_14.x
 spurtcommerce_download_location: /home/devops
 bcrypt_old_version: '"bcrypt": "3.0.1"'
 bcrypt_new_version: '"bcrypt": "5.0.1"'
+spurtcommerce_api_path: /home/devops/Spurtcommerce_3.0.2_community_LTS/api
