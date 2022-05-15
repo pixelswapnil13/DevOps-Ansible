@@ -54,15 +54,5 @@
     chdir: "{{ spurtcommerce_api_path }}"
 
 - name: Change the working directory to api path, build, change Env variatbles and start the project
-  ansible.builtin.command: NODE_ENV=production node dist/app.js
-    chdir: "{{ spurtcommerce_api_path }}"
-  ignore_errors: yes
-
-- name: Change the working directory to api path, build, change Env variatbles and start the project
-  ansible.builtin.command: sudo NODE_ENV=production forever start dist/app.js
-    chdir: "{{ spurtcommerce_api_path }}"
-  ignore_errors: yes
-
-- name: Change the working directory to api path, build, change Env variatbles and start the project
   ansible.builtin.command: npm start serve
     chdir: "{{ spurtcommerce_api_path }}"
