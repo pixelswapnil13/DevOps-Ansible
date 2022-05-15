@@ -50,7 +50,7 @@
     name: spurtcommerce
     state: present
 
-- name: Copy database dump file to remote host and restore it to database 'my_db'
+- name: Copy database spurtcommerce sql database file to spurtcommerce databse
   mysql_db: 
     name: spurtcommerce 
     state: import 
