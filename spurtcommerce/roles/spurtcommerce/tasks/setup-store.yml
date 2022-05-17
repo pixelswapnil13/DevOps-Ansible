@@ -10,7 +10,7 @@
 
 - name: Copy all files from dist folder to the server apache path
   ansible.builtin.copy:
-    src: "{{ spurtcommerce_store_path }}"
+    src: "{{ dist_path }}"
     dest: "{{ apache_path }}"
     owner: devops
     group: devops
