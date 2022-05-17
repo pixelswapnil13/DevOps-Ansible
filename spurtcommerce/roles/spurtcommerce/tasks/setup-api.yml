@@ -1,23 +1,4 @@
 ---
-- name: Download nopCommerce
-  ansible.builtin.get_url:
-    url: "https://github.com/pixelswapnil13/Ansible/raw/main/spurtcommerce/Spurtcommerce_3.0.2_community_LTS.zip"
-    dest: "{{ spurtcommerce_download_location }}"
-    mode: '0777'
-
-- name: Install Unzip
-  ansible.builtin.apt:
-    name: unzip
-    state: present
-
-- name: Unarchive Spurtcommerce_3.0.2_community_LTS.zip
-  ansible.builtin.unarchive:
-    src: "{{ spurtcommerce_download_location }}/Spurtcommerce_3.0.2_community_LTS.zip"
-    dest: "{{ spurtcommerce_download_location }}"
-    remote_src: yes
-    owner: devops
-    group: devops
-
 - name: update db password in env file
   ansible.builtin.command:
     cmd: "sed -i 's/TYPEORM_PASSWORD=PASSWORD/TYPEORM_PASSWORD=root/g' {{ spurtcommerce_api_path }}/.env"
