@@ -8,9 +8,15 @@
   args:
     chdir: "{{ spurtcommerce_store_path }}"
 
-# - 
+- name: Copy all files from dist folder to the server apache path
+  ansible.builtin.copy:
+    src: "{{ spurtcommerce_store_path }}"
+    dest: "{{ apache_path }}"
+    owner: devops
+    group: devops
+    mode: '0655'
 
-# - name: Start the project
-#   ansible.builtin.command: npm start serve
-#   args:
-#     chdir: "{{ spurtcommerce_api_path }}"
+- name: Start the project
+  ansible.builtin.command: npm start serve
+  args:
+    chdir: "{{ spurtcommerce_api_path }}"
