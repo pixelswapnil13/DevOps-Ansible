@@ -15,6 +15,7 @@
     owner: devops
     group: devops
     mode: '0655'
+    remote_src: yes
 
 - name: Start the project
   ansible.builtin.command: npm start serve
