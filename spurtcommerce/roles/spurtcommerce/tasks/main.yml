@@ -1,11 +1,11 @@
 ---
 - include_tasks: setup-Debian.yml
   when: ansible_facts['os_family'] == "Debian"
-# - include_tasks: setup-nodejs.yml
-# - include_tasks: setup-apache2.yml
-# - include_tasks: setup-mysql.yml
-# - include_tasks: setup-imagemagick.yml
-# - include_tasks: setup-angularcli.yml
-# - include_tasks: spurt_dow.yml
-- include_tasks: setup-api.yml
-# - include_tasks: setup-store.yml
+- include_tasks: setup-nodejs.yml
+- include_tasks: setup-apache2.yml
+- include_tasks: setup-mysql.yml
+- include_tasks: setup-imagemagick.yml
+- include_tasks: setup-angularcli.yml
+- include_tasks: spurt_dow.yml
+#- include_tasks: setup-api.yml
+- include_tasks: setup-store.yml

@@ -7,6 +7,15 @@
   ansible.builtin.command:
     cmd: "sed -i 's/TYPEORM_DATABASE=DATABASE/TYPEORM_DATABASE=spurtcommerce/g' {{ spurtcommerce_api_path }}/.env"
 
+
+- name: update db password in env.production file
+  ansible.builtin.command:
+    cmd: "sed -i 's/TYPEORM_PASSWORD=PASSWORD/TYPEORM_PASSWORD=root/g' {{ spurtcommerce_api_path }}/.env.production"
+
+- name: update db name in env.production file
+  ansible.builtin.command:
+    cmd: "sed -i 's/TYPEORM_DATABASE=DATABASE/TYPEORM_DATABASE=spurtcommerce/g' {{ spurtcommerce_api_path }}/.env.production"
+
 - name: update bcrypt version to 5.0.1
   ansible.builtin.command:
     cmd: "sed -i 's/{{ bcrypt_old_version }}/{{ bcrypt_new_version }}/g' {{ spurtcommerce_api_path }}/package.json"
