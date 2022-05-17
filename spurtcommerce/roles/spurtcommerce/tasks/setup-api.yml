@@ -26,6 +26,14 @@
   args:
     chdir: "{{ spurtcommerce_api_path }}"
 
+- name: update bcrypt version to 5.0.1
+  ansible.builtin.command:
+    cmd: "NODE_ENV=production node dist/app.js" sudo NODE_ENV=production forever start dist/app.js
+
+- name: update bcrypt version to 5.0.1
+  ansible.builtin.command:
+    cmd: "sudo NODE_ENV=production forever start dist/app.js" 
+
 - name: Start the project
   ansible.builtin.command: npm start serve
   args:
