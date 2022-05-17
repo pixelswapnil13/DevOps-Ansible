@@ -3,14 +3,14 @@
   community.general.npm:
     path: "{{ spurtcommerce_store_path }}"
 
-- name: Change the working directory to api path, build the project
+- name: Change the working directory to store path, build the project
   ansible.builtin.command: npm run build
   args:
     chdir: "{{ spurtcommerce_store_path }}"
 
 - name: Copy all files from dist folder to the server apache path
   ansible.builtin.copy:
-    src: "{{ dist_path }}"
+    src: "{{ dist_path }}/*"
     dest: "{{ apache_path }}"
     owner: devops
     group: devops
