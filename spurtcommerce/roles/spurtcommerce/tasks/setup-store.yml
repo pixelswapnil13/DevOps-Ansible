@@ -1,0 +1,16 @@
+---
+- name: Install packages based on package.json.
+  community.general.npm:
+    path: "{{ spurtcommerce_store_path }}"
+
+- name: Change the working directory to api path, build the project
+  ansible.builtin.command: npm run build
+  args:
+    chdir: "{{ spurtcommerce_store_path }}"
+
+# - 
+
+# - name: Start the project
+#   ansible.builtin.command: npm start serve
+#   args:
+#     chdir: "{{ spurtcommerce_api_path }}"
